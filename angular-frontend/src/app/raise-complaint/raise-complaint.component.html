@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Raise Complaint </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> Complain Name</label>
+            <input type="text" class ="form-control" id = "complainName"
+                [(ngModel)] = "complain.complainName" name = "complainName">
+        </div>
+    
+        <div class="form-group">
+            <label> Complain Description</label>
+            <input type="text" class ="form-control" id = "complainDescription"
+                [(ngModel)] = "complain.complainDescription" name = "complainDescription">
+        </div>
+    
+        <div class="form-group">
+            <label> Complain Type</label>
+            <input type="text" class ="form-control" id = "complainType"
+                [(ngModel)] = "complain.complainType" name = "complainType">
+        </div>
+
+        <div class="form-group">
+            <label> Complain Pin Code</label>
+            <input type="text" class ="form-control" id = "complainPinCode"
+                [(ngModel)] = "complain.complainPinCode" name = "complainPinCode">
+        </div>
+
+        <div class="form-group">
+            <label> Complain Status</label>
+            <input type="text" class ="form-control" id = "complainStatus"
+                [(ngModel)] = "complain.complainStatus" name = "complainStatus">
+        </div>
+    
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 

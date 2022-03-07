@@ -10,7 +10,11 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { CustomerComponent } from './customer/customer.component';
 import { RaiseComplaintComponent } from './raise-complaint/raise-complaint.component';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
+import { ViewComplaintComponent } from './view-complaint/view-complaint.component';
+import { ComplainDetailsComponent } from './complain-details/complain-details.component';
+import { ComplainListComponent } from './complain-list/complain-list.component';
+import { UpdateComplainComponent } from './update-complain/update-complain.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { LoginComponent } from './login/login.component'
     EmployeeDetailsComponent,
     CustomerComponent,
     RaiseComplaintComponent,
-    LoginComponent
+    LoginComponent,
+    ViewComplaintComponent,
+    ComplainDetailsComponent,
+    ComplainListComponent,
+    UpdateComplainComponent
   ],
   imports: [
     BrowserModule,

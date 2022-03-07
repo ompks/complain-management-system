@@ -1,35 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee'
-import { EmployeeService } from '../employee.service'
+import { Complain } from '../complain';
+import { ComplainService } from '../complain.service';
 import { Router } from '@angular/router';
-@Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
-})
-export class EmployeeListComponent implements OnInit {
 
-  employees: Employee[];
+@Component({
+  selector: 'app-complain-list',
+  templateUrl: './complain-list.component.html',
+  styleUrls: ['./complain-list.component.css']
+})
+export class ComplainListComponent implements OnInit {
+
+
+  complains: Complain[];
   isAdmin=false;
   isManager=false;
   isEngineer=false;
   isCustomer=false
-  constructor(private employeeService: EmployeeService,
+  constructor(private complainService: ComplainService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.getEmployees();
+    this.getComplains();
   }
 
-  private getEmployees(){
-    this.employeeService.getEmployeesList().subscribe(data => {
-      this.employees = data;
+  private getComplains(){
+    this.complainService.getComplainsList().subscribe(data => {
+
+      this.complains=data;
     });
   }
 
-  employeeDetails(id: number){
-    this.router.navigate(['employee-details', id]);
+  complainDetails(id:number){
+    this.router.navigate(['complain-details', id]);
   }
+
   enableEmployeeRoute(){
     const data={user:'om',role:1};
     if(data.role==1){
@@ -56,16 +60,17 @@ export class EmployeeListComponent implements OnInit {
     else {
       this.router.navigate['/login']
     }
-
-  }
-  updateEmployee(id: number){
-    this.router.navigate(['update-employee', id]);
-  }
-
-  deleteEmployee(id: number){
-    this.employeeService.deleteEmployee(id).subscribe( data => {
-      console.log(data);
-      this.getEmployees();
-    })
-  }
 }
+
+updateComplain(id: number){
+  this.router.navigate(['update-complain', id]);
+}
+
+deleteComplain(id: number){
+  this.complainService.deleteComplain(id).subscribe( data => {
+    console.log(data);
+    this.getComplains();
+  })
+}
+}
+

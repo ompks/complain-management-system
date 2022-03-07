@@ -29,7 +29,7 @@ export class RaiseComplaintComponent implements OnInit {
   }
 
   goToEmployeeList(){
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/complain-details']);
   }
   
   onSubmit(){

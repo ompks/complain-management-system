@@ -56,17 +56,17 @@ public class ComplaintController {
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
 		
 		complaint.setComplainName(complaintDetails.getComplainName());
-		complaint.setComplainPinCode(complaintDetails.getComplainPinCode());
+		complaint.setComplainDescription(complaintDetails.getComplainDescription());
 		complaint.setComplainType(complaintDetails.getComplainType());
-		
-		
+		complaint.setComplainPinCode(complaintDetails.getComplainPinCode());
+		complaint.setComplainStatus(complaintDetails.getComplainStatus());
 		Complaint updatedComplaint= complainRepository.save(complaint);
 //		Employee updatedEmployee = employeeRepository.save(employee);
 		return ResponseEntity.ok(updatedComplaint);
 	}
 	
 	// delete employee rest api
-	@DeleteMapping("/complaints/{id}")
+	@DeleteMapping("/complains/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
 		Complaint complaint = complainRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));

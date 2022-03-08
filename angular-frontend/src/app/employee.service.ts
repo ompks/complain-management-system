@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,4 +37,9 @@ export class EmployeeService {
     {{ "debug" }}
     return this.httpClient.post(`${this.baseURL}`, employee);
   }
+
+  callServerForPost(url: string, reqBody: any): Observable<any> {
+    return this.httpClient.post(url, reqBody);
+}
+ 
 }

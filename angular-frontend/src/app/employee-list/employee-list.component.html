@@ -6,6 +6,7 @@
             <th> Last Name </th>
             <th> Email Id</th>
             <th> Password </th>
+            <th>Pin Code</th>
             <th> Role </th>
             <th> Actions </th>
         </tr>
@@ -17,6 +18,7 @@
             <td> {{ employee.emailId }} </td>
             <td> {{ employee.password }}</td>
             <td> {{ employee.role }}</td>
+            <td> {{employee.pinCode}} </td>
 
             <td>
                 <!-- *ngIf="isAdmin || isManager" -->

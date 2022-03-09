@@ -31,7 +31,7 @@ export class EmployeeListComponent implements OnInit {
     this.router.navigate(['employee-details', id]);
   }
   enableEmployeeRoute(){
-    const data={user:'om',role:1};
+    const data={user:'om',role:2};
     if(data.role==1){
       this.isAdmin=true;
       this.isManager=true;

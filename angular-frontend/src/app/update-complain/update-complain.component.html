@@ -26,10 +26,16 @@
                 [(ngModel)] = "complain.complainPinCode" name = "complainPinCode">
         </div>  
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label> Complain Status</label>
             <input type="text" class ="form-control" id = "complainStatus"
                 [(ngModel)] = "complain.complainStatus" name = "complainStatus">
+        </div> -->
+
+        <div class="form-group">
+            <label>Complain Status</label>
+            <select name="selectedStatus" id="status" class="form-control" [(ngModel)]="complain.complainStatus" >
+            <option *ngFor="let option of options" [value]="option" >{{option}}</option></select>
         </div>
     
         <button class = "btn btn-success" type ="submit">Submit</button>

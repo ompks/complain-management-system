@@ -5,4 +5,5 @@ export class Employee {
     emailId: string;
     password:string;
     role:string;
+    pinCode:string;
 }

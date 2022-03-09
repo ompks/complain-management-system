@@ -3,7 +3,8 @@ import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http'
+// import {appComponent} from '../app.component'
 
 
 @Component({
@@ -14,6 +15,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   employee: Employee = new Employee();
+  isAdmin=false;
+  isManager=false;
+  isEngineer=false;
+  isCustomer=false
   constructor(
     // public fb: FormBuilder,
     private employeeService: EmployeeService,
@@ -40,17 +45,47 @@ export class LoginComponent implements OnInit {
 // }
 
 
+enableEmployeeRoute(data){
+  // const data={user:'om',role:1};
+  console.log(data['role'])
+  if(data.role==1){
+    this.isAdmin=true;
+    this.isManager=true;
+    this.isEngineer=true;
+    this.isCustomer=true
+  }else if(data.role==2){
+    this.isAdmin=false;
+    this.isManager=true;
+    this.isEngineer=false;
+    this.isCustomer=false
+  }else if(data.role==3){
+    this.isAdmin=false;
+    this.isManager=false;
+    this.isEngineer=true;
+    this.isCustomer=false
+  }else if(data.role==4){
+    this.isAdmin=false;
+    this.isManager=false;
+    this.isEngineer=false;
+    this.isCustomer=true
+  }
+  else {
+    this.router.navigate['/login']
+  }
 
+}
 
   login() {
     this.employeeService.callServerForPost("http://localhost:8080/api/v1/login", this.employee).subscribe(data => {
-      
-      console.log("inside data status")
-    if(data.status == 'SUCCESS'){
-        console.log("inside data status")
+      console.log(data)
+    if(data['emailId'] != null){
+        // console.log("inside data status")
+        // appComponent.enableEmployeeRoute()
+        this.enableEmployeeRoute(data);
         this.router.navigate(['/employees']);
       }
       else {
+        window.confirm("Please Enter Valid Credentials")
         console.log('Error')
       }
     },

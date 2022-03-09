@@ -12,6 +12,7 @@ import { ViewComplaintComponent } from './view-complaint/view-complaint.componen
 import { ComplainDetailsComponent } from './complain-details/complain-details.component';
 import { ComplainListComponent } from './complain-list/complain-list.component';
 import {  UpdateComplainComponent} from './update-complain/update-complain.component'
+import { AppComponent } from './app.component';
 const routes: Routes = [
   {path: 'employees', component: EmployeeListComponent },
   {path: 'create-employee', component: CreateEmployeeComponent},
@@ -25,8 +26,8 @@ const routes: Routes = [
   {path: 'complains', component: ComplainListComponent },
   {path: 'update-complain/:id', component: UpdateComplainComponent},
   {path: 'complain-details/:id', component: ComplainDetailsComponent},
-  {path: 'login', component:LoginComponent}
-
+  {path: 'login', component:LoginComponent},
+  {path: 'main-page', component:AppComponent}
 ];
 
 @NgModule({

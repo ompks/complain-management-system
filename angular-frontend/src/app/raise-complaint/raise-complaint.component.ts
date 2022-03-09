@@ -20,21 +20,23 @@ export class RaiseComplaintComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveEmployee(){
+  saveComplain(){
+    this.complain['complainStatus']= 'Open'
+    console.log(this.complain)
     this.complainService.raiseComplain(this.complain).subscribe( data =>{
       console.log(data);
-      this.goToEmployeeList();
+      this.goToComplainList();
     },
     error => console.log(error));
   }
 
-  goToEmployeeList(){
-    this.router.navigate(['/complain-details']);
+  goToComplainList(){
+    this.router.navigate(['/complains']);
   }
   
   onSubmit(){
     console.log(this.complain);
-    this.saveEmployee();
+    this.saveComplain();
   }
 }
 

@@ -12,7 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpdateComplainComponent implements OnInit {
 
-
+  public options: string[] = ["Open", "Closed", "In Progress", "Reopen"];
+  selectedStatus = "Customer";
 
   id: number;
   complain: Complain = new Complain();

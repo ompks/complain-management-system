@@ -44,14 +44,14 @@ public class EmployeeController {
 	
 	//login 
 	@PostMapping("/login")
-	public ResponseEntity<String> userLogin(@RequestBody Employee employee) {
+	public ResponseEntity<Employee> userLogin(@RequestBody Employee employee) {
 		String email=employee.getEmailId();
 		String password= employee.getPassword();
 		System.out.println(email);
 		System.out.println(password);
 		Employee employee1 = employeeRepository.findByEmailIdAndPassword(employee.getEmailId(), employee.getPassword())
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + employee.getEmailId()));
-		return ResponseEntity.ok("Successful");
+		return ResponseEntity.ok(employee);
 //		return employeeRepository.
 	}
 	
@@ -76,6 +76,7 @@ public class EmployeeController {
 		employee.setLastName(employeeDetails.getLastName());
 		employee.setEmailId(employeeDetails.getEmailId());
 		employee.setPassword(employeeDetails.getPassword());
+		employee.setPinCode(employeeDetails.getPinCode());
 		employee.setRole(employeeDetails.getRole());
 		
 		Employee updatedEmployee = employeeRepository.save(employee);

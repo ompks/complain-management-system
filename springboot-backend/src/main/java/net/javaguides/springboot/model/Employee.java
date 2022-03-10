@@ -31,6 +31,17 @@ public class Employee {
 	@Column(name="role")
 	private String role;
 	
+	@Column(name="pin_code")
+	private String pinCode;
+	
+	public String getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
+	}
+
 	public String getPassword() {
 		return password;
 	}

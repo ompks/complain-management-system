@@ -37,6 +37,12 @@
             <select name="selectedStatus" id="status" class="form-control" [(ngModel)]="complain.complainStatus" >
             <option *ngFor="let option of options" [value]="option" >{{option}}</option></select>
         </div>
+
+        <div class="form-group">
+            <label>Assign To</label>
+            <select name="selectedStatus" id="assigned-to" class="form-control" [(ngModel)]="complain.assignedTo" >
+            <option *ngFor="let option of options" [value]="option" >{{option}}</option></select>
+        </div>
     
         <button class = "btn btn-success" type ="submit">Submit</button>
     

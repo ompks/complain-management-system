@@ -1,5 +1,6 @@
 package net.javaguides.springboot.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +14,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	Optional<Employee> findByEmailId(String x);
 	
     Optional<Employee> findByEmailIdAndPassword(String emailId, String password);
+    
+    Optional<List> findAllByPinCode(String y);
+    
 ////    Optional<Employee> findByUsername(String username);
 //    Boolean existsByUsername(String emailId);
 //    Boolean existsByEmail(String emailId);

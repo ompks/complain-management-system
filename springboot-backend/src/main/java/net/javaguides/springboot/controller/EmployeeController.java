@@ -3,6 +3,7 @@ package net.javaguides.springboot.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,14 +45,14 @@ public class EmployeeController {
 	
 	//login 
 	@PostMapping("/login")
-	public ResponseEntity<Employee> userLogin(@RequestBody Employee employee) {
+	public ResponseEntity<Optional<Employee>> userLogin(@RequestBody Employee employee) {
 		String email=employee.getEmailId();
 		String password= employee.getPassword();
 		System.out.println(email);
 		System.out.println(password);
 		Employee employee1 = employeeRepository.findByEmailIdAndPassword(employee.getEmailId(), employee.getPassword())
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + employee.getEmailId()));
-		return ResponseEntity.ok(employee);
+		return ResponseEntity.ok(employeeRepository.findByEmailId(email));
 //		return employeeRepository.
 	}
 	
@@ -65,6 +66,14 @@ public class EmployeeController {
 		return ResponseEntity.ok(employee);
 	}
 	
+	
+	// get employee by pincode rest api
+	@GetMapping("/employeesByPinCode/{pinCode}")
+	public ResponseEntity<List> getEmployee(@PathVariable String pinCode) {
+		List employee = employeeRepository.findAllByPinCode(pinCode)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with pin code :" + pinCode));
+		return ResponseEntity.ok(employee);
+	}
 	// update employee rest api
 	
 	@PutMapping("/employees/{id}")

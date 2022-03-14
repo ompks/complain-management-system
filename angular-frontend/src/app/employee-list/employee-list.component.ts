@@ -30,24 +30,25 @@ export class EmployeeListComponent implements OnInit {
   employeeDetails(id: number){
     this.router.navigate(['employee-details', id]);
   }
-  enableEmployeeRoute(){
-    const data={user:'om',role:2};
-    if(data.role==1){
+  enableEmployeeRoute(data){
+    // const data={user:'om',role:4};
+    console.log(data)
+    if(data['role']==1){
       this.isAdmin=true;
       this.isManager=true;
       this.isEngineer=true;
       this.isCustomer=true
-    }else if(data.role==2){
+    }else if(data['role']==2){
       this.isAdmin=false;
       this.isManager=true;
       this.isEngineer=false;
       this.isCustomer=false
-    }else if(data.role==3){
+    }else if(data['role']==3){
       this.isAdmin=false;
       this.isManager=false;
       this.isEngineer=true;
       this.isCustomer=false
-    }else if(data.role==4){
+    }else if(data['role']==4){
       this.isAdmin=false;
       this.isManager=false;
       this.isEngineer=false;

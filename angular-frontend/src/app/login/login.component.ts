@@ -4,7 +4,8 @@ import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
-// import {appComponent} from '../app.component'
+// import { AppComponent } from '../app.component';
+import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 
 @Component({
@@ -18,11 +19,13 @@ export class LoginComponent implements OnInit {
   isAdmin=false;
   isManager=false;
   isEngineer=false;
-  isCustomer=false
+  isCustomer=false;
+  // loginData=""
+
   constructor(
     // public fb: FormBuilder,
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
     ) { 
       
     }
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
   }
 
 
@@ -47,23 +51,23 @@ export class LoginComponent implements OnInit {
 
 enableEmployeeRoute(data){
   // const data={user:'om',role:1};
-  console.log(data['role'])
-  if(data.role==1){
+  console.log(data)
+  if(data['role']==1){
     this.isAdmin=true;
     this.isManager=true;
     this.isEngineer=true;
     this.isCustomer=true
-  }else if(data.role==2){
+  }else if(data['role']==2){
     this.isAdmin=false;
     this.isManager=true;
     this.isEngineer=false;
     this.isCustomer=false
-  }else if(data.role==3){
+  }else if(data['role']==3){
     this.isAdmin=false;
     this.isManager=false;
     this.isEngineer=true;
     this.isCustomer=false
-  }else if(data.role==4){
+  }else if(data['role']==4){
     this.isAdmin=false;
     this.isManager=false;
     this.isEngineer=false;
@@ -75,13 +79,20 @@ enableEmployeeRoute(data){
 
 }
 
+
+
+
   login() {
     this.employeeService.callServerForPost("http://localhost:8080/api/v1/login", this.employee).subscribe(data => {
-      console.log(data)
     if(data['emailId'] != null){
-        // console.log("inside data status")
+        console.log("inside data status")
+        this.enableEmployeeRoute(data)
+        this.employeeService.loginData=data;
+
+        // this.setData(data)
         // appComponent.enableEmployeeRoute()
-        this.enableEmployeeRoute(data);
+        // let appComponent= new AppComponent(this.router);
+        // appComponent.enableEmployeeRoute(data);
         this.router.navigate(['/employees']);
       }
       else {

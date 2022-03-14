@@ -10,6 +10,9 @@ import { Employee } from './employee';
 export class EmployeeService {
 
   private baseURL = "http://localhost:8080/api/v1/employees";
+  private baseURLWithPinCode="http://localhost:8080/api/v1/employeesByPinCode"
+
+  loginData= ""
 
   constructor(private httpClient: HttpClient) { }
   
@@ -40,6 +43,10 @@ export class EmployeeService {
 
   callServerForPost(url: string, reqBody: any): Observable<any> {
     return this.httpClient.post(url, reqBody);
+}
+
+getEmployeeByPinCode(pinCode: string): Observable<Employee>{
+  return this.httpClient.get<Employee>(`${this.baseURLWithPinCode}/${pinCode}`);
 }
  
 }

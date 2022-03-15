@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Complain } from '../complain';
 import { ComplainService } from '../complain.service';
 import { Router } from '@angular/router';
+import {EmployeeService} from '../employee.service'
 @Component({
   selector: 'app-view-complaint',
   templateUrl: './view-complaint.component.html',
@@ -14,11 +15,19 @@ export class ViewComplaintComponent implements OnInit {
   isManager=false;
   isEngineer=false;
   isCustomer=false
-  constructor(private complainService: ComplainService,
-    private router: Router) { }
+
+  constructor(
+    private complainService: ComplainService,
+    private router: Router,
+    private employeeService:EmployeeService
+
+    ) { }
 
   ngOnInit(): void {
     this.getComplains();
+    console.log("login Data id in :- "+this.employeeService.loginData['id']);
+    
+    
   }
 
 
@@ -33,7 +42,7 @@ export class ViewComplaintComponent implements OnInit {
     this.router.navigate(['complain-details', id]);
   }
   enableEmployeeRoute(){
-    const data={user:'om',role:1};
+    const data={user:'om',role:4};
     if(data.role==1){
       this.isAdmin=true;
       this.isManager=true;

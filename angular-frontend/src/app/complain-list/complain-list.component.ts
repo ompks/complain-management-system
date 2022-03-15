@@ -35,7 +35,7 @@ export class ComplainListComponent implements OnInit {
   }
 
   enableEmployeeRoute(){
-    const data={user:'om',role:1};
+    const data={user:'om',role:4};
     if(data.role==1){
       this.isAdmin=true;
       this.isManager=true;

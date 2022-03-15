@@ -5,5 +5,7 @@ export class Complain {
     complainType: string;
     complainPinCode:string;
     complainStatus:string;
+    assignedTo:string;
+    raiseBy:string;
 
 }

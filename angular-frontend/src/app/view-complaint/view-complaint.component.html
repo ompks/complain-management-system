@@ -1,4 +1,4 @@
-<h2> Complain List</h2>
+<h2> Complains List</h2>
 <table class = "table table-striped">
     <thead>
         <tr>
@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let complain of complains" >
+        <tr *ngFor = "let complain of complains"  class="w-100 p-3" >
             <td> {{ complain.id }} </td>
             <td> {{ complain.complainName }} </td>
             <td> {{ complain.complainDescription }} </td>
@@ -21,8 +21,8 @@
 
             <td>
                 <!-- *ngIf="isAdmin || isManager"    -->
-                <button  (click) = "updateComplain(complain.id)" class = "btn btn-info"> Update</button>
-                <button (click) = "deleteComplain(complain.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button  (click) = "updateComplain(complain.id)" class = "btn btn-info" > Update</button>
+                <button (click) = "deleteComplain(complain.id)" class = "btn btn-danger" > Delete</button>
                 <button (click) = "complainDetails(complain.id)" class = "btn btn-info"  name ="view-complain"> View</button>
             </td>
         </tr>

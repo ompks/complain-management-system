@@ -8,6 +8,7 @@
             <th> Complain Type </th>
             <th> Complain Pin Code </th>
             <th> Complain Status </th>
+            <th> Assigned To</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +19,7 @@
             <td> {{ complain.complainType }}</td>
             <td> {{ complain.complainPinCode }}</td>
             <td> {{ complain.complainStatus }}</td>
-            
+            <td> {{complain.assignedTo}} </td>
 
             <td>
                 <!-- *ngIf="isAdmin || isManager" -->

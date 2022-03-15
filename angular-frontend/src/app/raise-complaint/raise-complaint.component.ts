@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { Employee } from '../employee';
 import { Complain} from '../complain';
-// import { EmployeeService } from '../employee.service';
 import {ComplainService} from '../complain.service';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 
 @Component({
@@ -14,14 +13,23 @@ import { Router } from '@angular/router';
 export class RaiseComplaintComponent implements OnInit {
   // employee: Employee = new Employee();
   complain:Complain= new Complain();
-  constructor(private complainService: ComplainService,
-    private router: Router) { }
+
+
+
+  constructor(
+    private complainService: ComplainService,
+    private router: Router,
+    private employeeService: EmployeeService,
+    // private loginComponent:LoginComponent
+    ) { }
+
 
   ngOnInit(): void {
   }
 
   saveComplain(){
     this.complain['complainStatus']= 'Open'
+    this.complain['raisedBy']=this.employeeService.loginData['id']
     console.log(this.complain)
     this.complainService.raiseComplain(this.complain).subscribe( data =>{
       console.log(data);
@@ -38,5 +46,6 @@ export class RaiseComplaintComponent implements OnInit {
     console.log(this.complain);
     this.saveComplain();
   }
+
 }
 

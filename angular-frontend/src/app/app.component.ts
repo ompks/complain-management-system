@@ -19,8 +19,10 @@ export class AppComponent implements OnInit {
      this.enableEmployeeRoute(); 
   }
   enableEmployeeRoute(){
+    // console.log(data)
     const data={user:'om',role:1};
     if(data.role==1){
+      console.log("test")
       this.isAdmin=true;
       this.isManager=true;
       this.isEngineer=true;
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit {
     }
     else {
       this.route.navigate['/login']
+      console.log("wring role for the user")
     }
 
   }

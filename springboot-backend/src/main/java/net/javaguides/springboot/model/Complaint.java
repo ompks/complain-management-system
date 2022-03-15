@@ -10,25 +10,63 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "complaint")
 public class Complaint {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(name = "complain_name")
 	private String complainName;
 
 	@Column(name = "complain_description")
 	private String complainDescription;
-	
+
 	@Column(name = "complain_type")
 	private String complainType;
-	
+
 	@Column(name = "complain_pin_code")
 	private String complainPinCode;
-	
+
 	@Column(name = "complain_status")
 	private String complainStatus;
+
+	@Column(name = "assigned_to")
+	private String assignedTo;
+
+	@Column(name = "raised_by")
+	private String raisedBy;
+
+	public Complaint() {
+
+	}
+
+	public Complaint(String complainName, String complainDescription, String complainType, String complainPinCode,
+			String complainStatus, String assignedTo, String raisedBy) {
+		super();
+		this.complainName = complainName;
+		this.complainDescription = complainDescription;
+		this.complainType = complainType;
+		this.complainPinCode = complainPinCode;
+		this.complainStatus = complainStatus;
+		this.assignedTo = assignedTo;
+		this.raisedBy = raisedBy;
+	}
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public String getRaisedBy() {
+		return raisedBy;
+	}
+
+	public void setRaisedBy(String raisedBy) {
+		this.raisedBy = raisedBy;
+	}
 
 	public String getComplainStatus() {
 		return complainStatus;
@@ -78,6 +116,4 @@ public class Complaint {
 		this.complainPinCode = complainPinCode;
 	}
 
-	
-	
 }

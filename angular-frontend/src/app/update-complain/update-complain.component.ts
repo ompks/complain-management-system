@@ -72,7 +72,7 @@ getEmployeeByPinCode(pin){
 
   public emplyeeIdList(employeeList){
       for(let key of employeeList){
-        this.idList.push(key.id);
+        this.idList.push(key.firstName+" "+key.lastName);
       }
       console.log("idList"+this.idList);
       

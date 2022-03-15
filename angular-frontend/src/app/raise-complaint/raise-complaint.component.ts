@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { Employee } from '../employee';
 import { Complain} from '../complain';
-// import { EmployeeService } from '../employee.service';
 import {ComplainService} from '../complain.service';
 import { Router } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
 import { EmployeeService } from '../employee.service';
 
 

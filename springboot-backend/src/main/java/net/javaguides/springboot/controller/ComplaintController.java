@@ -48,6 +48,16 @@ public class ComplaintController {
 		return ResponseEntity.ok(complaint);
 	}
 	
+	
+	// get employee by raisedBy rest api
+		@GetMapping("/complains/{raisedBy}")
+		public ResponseEntity<List> getEmployeeById(@PathVariable String raisedBy) {
+			List complainListRaisedBy = complainRepository.findAllByRaisedBy(raisedBy)
+					.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with pin code :" + raisedBy));
+			return ResponseEntity.ok(complainListRaisedBy);
+		}
+		
+		
 	// update employee rest api
 	
 	@PutMapping("/complains/{id}")

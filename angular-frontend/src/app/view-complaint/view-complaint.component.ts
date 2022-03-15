@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Complain } from '../complain';
 import { ComplainService } from '../complain.service';
 import { Router } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
+import {EmployeeService} from '../employee.service'
 @Component({
   selector: 'app-view-complaint',
   templateUrl: './view-complaint.component.html',
@@ -19,11 +19,15 @@ export class ViewComplaintComponent implements OnInit {
   constructor(
     private complainService: ComplainService,
     private router: Router,
+    private employeeService:EmployeeService
 
     ) { }
 
   ngOnInit(): void {
     this.getComplains();
+    console.log("login Data id in :- "+this.employeeService.loginData['id']);
+    
+    
   }
 
 

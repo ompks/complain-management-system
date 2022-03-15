@@ -14,7 +14,7 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./update-complain.component.css']
 })
 export class UpdateComplainComponent implements OnInit {
-
+   idList=[];
   public options: string[] = ["Open", "Closed", "In Progress", "Reopen"];
   selectedStatus = "Customer";
   public assignedToValues:string[]= [];
@@ -32,26 +32,36 @@ export class UpdateComplainComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     
+     this.fetchComplainDetail();
 
-    this.complainService.getComplainById(this.id).subscribe(data => {
-      this.complain = data;
-      this.pinCode=data["complainPinCode"]
-      console.log(this.pinCode)
-    }, error => console.log(error));
-
-
-    this.employeeService.getEmployeeByPinCode("851129").subscribe(data =>{
-      this.employee=data;
-      console.log("inside pincode")
-      this.assignedToValues.concat(data[0]['id'])
-      this.assignedToValues.concat(data[1]['id'])
-      console.log(data[0]['id'])
-      console.log(data[1]['id'])
-      console.log(this.assignedToValues)
-    }, error => console.log(error) );
     
-    console.log(this.assignedToValues)
   }
+
+fetchComplainDetail(){
+
+  this.complainService.getComplainById(this.id).subscribe(
+    data => {
+    this.complain = data;
+    this.pinCode=data["complainPinCode"]
+    this.getEmployeeByPinCode(this.pinCode);
+  }, 
+  error =>{
+    console.log(error)
+  } );
+
+}
+
+getEmployeeByPinCode(pin){
+  this.employeeService.getEmployeeByPinCode(pin).subscribe(data =>{
+    console.log("pin"+this.pinCode);
+    
+    this.employee=data;
+    console.log(this.employee);
+    this.emplyeeIdList(this.employee)
+  }, error => console.log(error) );
+  
+  console.log(this.assignedToValues)
+}
 
   onSubmit(){
     this.complainService.updateComplain(this.id, this.complain).subscribe( data =>{
@@ -60,6 +70,14 @@ export class UpdateComplainComponent implements OnInit {
     , error => console.log(error));
   }
 
+  public emplyeeIdList(employeeList){
+      for(let key of employeeList){
+        this.idList.push(key.id);
+      }
+      console.log("idList"+this.idList);
+      
+      return this.idList;
+  }
   goToComplainList(){
     this.router.navigate(['/complains']);
   }

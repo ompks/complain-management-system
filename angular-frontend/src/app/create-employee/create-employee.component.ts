@@ -14,8 +14,8 @@ export class CreateEmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
-  public options: string[] = ["Admin", "Manager", "Engineer", "Customer"];
-  selectedQuantity = "Customer";
+  public options: string[] = ["1", "2", "3", "4"];
+  selectedQuantity = "1";
 
   ngOnInit(): void {
   }

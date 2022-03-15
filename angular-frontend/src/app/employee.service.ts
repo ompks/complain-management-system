@@ -12,7 +12,7 @@ export class EmployeeService {
   private baseURL = "http://localhost:8080/api/v1/employees";
   private baseURLWithPinCode="http://localhost:8080/api/v1/employeesByPinCode"
 
-  loginData= ""
+  loginData: [any];
 
   constructor(private httpClient: HttpClient) { }
   
@@ -38,6 +38,7 @@ export class EmployeeService {
 
   userLogin(employee:Employee): Observable<Object>{
     {{ "debug" }}
+    
     return this.httpClient.post(`${this.baseURL}`, employee);
   }
 

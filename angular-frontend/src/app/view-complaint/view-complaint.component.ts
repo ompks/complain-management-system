@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Complain } from '../complain';
 import { ComplainService } from '../complain.service';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-view-complaint',
   templateUrl: './view-complaint.component.html',
@@ -14,8 +15,12 @@ export class ViewComplaintComponent implements OnInit {
   isManager=false;
   isEngineer=false;
   isCustomer=false
-  constructor(private complainService: ComplainService,
-    private router: Router) { }
+
+  constructor(
+    private complainService: ComplainService,
+    private router: Router,
+
+    ) { }
 
   ngOnInit(): void {
     this.getComplains();

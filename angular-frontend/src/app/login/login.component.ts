@@ -14,13 +14,13 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loginUrl="http://localhost:8080/api/v1/login"
   employee: Employee = new Employee();
   isAdmin=false;
   isManager=false;
   isEngineer=false;
   isCustomer=false;
-  // loginData=""
+  loginData=[]
 
   constructor(
     // public fb: FormBuilder,
@@ -83,7 +83,8 @@ enableEmployeeRoute(data){
 
 
   login() {
-    this.employeeService.callServerForPost("http://localhost:8080/api/v1/login", this.employee).subscribe(data => {
+    this.employeeService.callServerForPost(this.loginUrl, this.employee).subscribe(data => {
+    this.loginData=data
     if(data['emailId'] != null){
         console.log("inside data status")
         this.enableEmployeeRoute(data)

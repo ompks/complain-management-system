@@ -14,7 +14,11 @@ import { LoginComponent } from './login/login.component';
 import { ViewComplaintComponent } from './view-complaint/view-complaint.component';
 import { ComplainDetailsComponent } from './complain-details/complain-details.component';
 import { ComplainListComponent } from './complain-list/complain-list.component';
-import { UpdateComplainComponent } from './update-complain/update-complain.component'
+import { UpdateComplainComponent } from './update-complain/update-complain.component';
+import { UserComponent } from './user/user.component';
+import { ManagerComponent } from './manager/manager.component';
+import { EngineerComponent } from './engineer/engineer.component';
+import { AdminComponent } from './admin/admin.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { UpdateComplainComponent } from './update-complain/update-complain.compo
     ViewComplaintComponent,
     ComplainDetailsComponent,
     ComplainListComponent,
-    UpdateComplainComponent
+    UpdateComplainComponent,
+    UserComponent,
+    ManagerComponent,
+    EngineerComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

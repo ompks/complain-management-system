@@ -89,12 +89,29 @@ enableEmployeeRoute(data){
         console.log("inside data status")
         this.enableEmployeeRoute(data)
         this.employeeService.loginData=data;
+        if(data['role'] == 'Admin'){
+          this.router.navigate(['/admin']);
+        }
+        else if (data['role'] == 'Engineer'){
+          this.router.navigate(['/engineer']);
+        }
+        else if (data['role'] == 'Manager'){
+          this.router.navigate(['/manager']);
+        }
 
-        // this.setData(data)
-        // appComponent.enableEmployeeRoute()
-        // let appComponent= new AppComponent(this.router);
-        // appComponent.enableEmployeeRoute(data);
-        this.router.navigate(['/employees']);
+        else if (data['role'] == 'User'){
+          this.router.navigate(['/user']);
+        }
+        else {
+          this.router.navigate(['/login']);
+
+        }
+        // // this.setData(data)
+        // // appComponent.enableEmployeeRoute()
+        // // let appComponent= new AppComponent(this.router);
+        // // appComponent.enableEmployeeRoute(data);
+
+        // this.router.navigate(['/user']);
       }
       else {
         window.confirm("Please Enter Valid Credentials")

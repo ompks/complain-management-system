@@ -49,13 +49,13 @@ public class ComplaintController {
 	}
 	
 	
-	// get employee by raisedBy rest api
-		@GetMapping("/complains/{raisedBy}")
-		public ResponseEntity<List> getEmployeeById(@PathVariable String raisedBy) {
-			List complainListRaisedBy = complainRepository.findAllByRaisedBy(raisedBy)
-					.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with pin code :" + raisedBy));
-			return ResponseEntity.ok(complainListRaisedBy);
-		}
+//	// get employee by raisedBy rest api
+//		@GetMapping("/complains/{raisedBy}")
+//		public ResponseEntity<List> getEmployeeById(@PathVariable String raisedBy) {
+//			List complainListRaisedBy = complainRepository.findAllByRaisedBy(raisedBy)
+//					.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with pin code :" + raisedBy));
+//			return ResponseEntity.ok(complainListRaisedBy);
+//		}
 		
 		
 	// update employee rest api
@@ -70,6 +70,7 @@ public class ComplaintController {
 		complaint.setComplainType(complaintDetails.getComplainType());
 		complaint.setComplainPinCode(complaintDetails.getComplainPinCode());
 		complaint.setComplainStatus(complaintDetails.getComplainStatus());
+		complaint.setAssignedTo(complaintDetails.getAssignedTo());
 		Complaint updatedComplaint= complainRepository.save(complaint);
 //		Employee updatedEmployee = employeeRepository.save(employee);
 		return ResponseEntity.ok(updatedComplaint);

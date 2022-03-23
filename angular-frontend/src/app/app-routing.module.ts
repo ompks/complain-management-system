@@ -13,11 +13,15 @@ import { ComplainDetailsComponent } from './complain-details/complain-details.co
 import { ComplainListComponent } from './complain-list/complain-list.component';
 import {  UpdateComplainComponent} from './update-complain/update-complain.component'
 import { AppComponent } from './app.component';
-
+import { UserComponent } from './user/user.component';
+import { ManagerComponent } from './manager/manager.component';
+import { EngineerComponent } from './engineer/engineer.component';
+import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   {path: 'employees', component: EmployeeListComponent },
+  {path: 'view-employees', component: EmployeeListComponent },
   {path: 'create-employee', component: CreateEmployeeComponent},
-  {path: '', redirectTo: 'employees', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'update-employee/:id', component: UpdateEmployeeComponent},
   {path: 'employee-details/:id', component: EmployeeDetailsComponent},
   {path: 'customer', component:CustomerComponent},
@@ -27,7 +31,20 @@ const routes: Routes = [
   {path: 'complains', component: ComplainListComponent },
   {path: 'update-complain/:id', component: UpdateComplainComponent},
   {path: 'complain-details/:id', component: ComplainDetailsComponent},
-  {path: 'login', component:LoginComponent}
+  {path: 'login', component:LoginComponent},
+  {path:'user', component:UserComponent},
+  {path:'user/raise-complaint', component:RaiseComplaintComponent},
+  {path:'user/view-complaint', component:ViewComplaintComponent},
+  {path:'admin', component:AdminComponent},
+  {path: 'admin/employees', component: EmployeeListComponent },
+  {path:'admin/raise-complaint', component:RaiseComplaintComponent},
+  {path:'admin/view-complaint', component:ViewComplaintComponent},
+  {path:'admin/create-employee', component:CreateEmployeeComponent},
+  {path:'admin/view-employees', component:EmployeeListComponent},
+  {path:'manager', component:ManagerComponent},
+  {path:'manager/view-complaint', component:ViewComplaintComponent},
+  {path:'engineer', component:EngineerComponent},
+  {path:'engineer/view-complaint', component:ViewComplaintComponent},
 ];
 
 @NgModule({

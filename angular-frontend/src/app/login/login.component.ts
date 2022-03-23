@@ -4,7 +4,7 @@ import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
-// import { AppComponent } from '../app.component';
+import { AppComponent } from '../app.component';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 
@@ -21,11 +21,13 @@ export class LoginComponent implements OnInit {
   isEngineer=false;
   isCustomer=false;
   loginData=[]
+  loginInputData={}
 
   constructor(
     // public fb: FormBuilder,
     private employeeService: EmployeeService,
     private router: Router,
+    private appComponent:AppComponent
     ) { 
       
     }
@@ -37,16 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  // loginModel = {
-  //   "emailId": "ompks95@gmail.com",
-  //   "password": "1234"
-  // };
-
-  // loginForm: FormGroup;
-
-//   public isEquals(val1: any, val2: any): boolean {
-//     return BspUtil.isEquals(val1, val2);
-// }
 
 
 enableEmployeeRoute(data){
@@ -89,12 +81,29 @@ enableEmployeeRoute(data){
         console.log("inside data status")
         this.enableEmployeeRoute(data)
         this.employeeService.loginData=data;
+        // if(data['role'] == 'Admin'){
+        //   this.router.navigate(['/admin']);
+        // }
+        // else if (data['role'] == 'Engineer'){
+        //   this.router.navigate(['/engineer']);
+        // }
+        // else if (data['role'] == 'Manager'){
+        //   this.router.navigate(['/manager']);
+        // }
 
-        // this.setData(data)
-        // appComponent.enableEmployeeRoute()
-        // let appComponent= new AppComponent(this.router);
-        // appComponent.enableEmployeeRoute(data);
-        this.router.navigate(['/employees']);
+        // else if (data['role'] == 'User'){
+        //   this.router.navigate(['/user']);
+        // }
+        // else {
+        //   // this.router.navigate(['/login']);
+
+        // }
+        // // this.setData(data)
+        // // appComponent.enableEmployeeRoute()
+        // // let appComponent= new AppComponent(this.router);
+        // // appComponent.enableEmployeeRoute(data);
+
+        // this.router.navigate(['/user']);
       }
       else {
         window.confirm("Please Enter Valid Credentials")
@@ -103,20 +112,18 @@ enableEmployeeRoute(data){
     },
     error => console.log(error));
 
-    // console.log("Login Successfull")
-    // this.employeeService.userLogin(this.employee).subscribe(data => {
-    //   console.log(data);
-    //   console.log("Login Successfull");
-    //   this.router.navigate(['/employees']);
-
-    //   // this.goToEmployeeList();
-    // },
-    //   error => console.log(error));
+   
   }
 
   onSubmit() {
-    // console.log(this.employee);
-    this.login();
+    console.log("Employee data", this.employee);
+    this.loginInputData=this.employee
+    // this.login();
+    this.appComponent.login(this.loginInputData)
 
+  }
+  onSignUp(){
+    console.log(this.employee);
+    this.router.navigate(['/create-employee']);
   }
 }

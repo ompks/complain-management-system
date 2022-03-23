@@ -1,30 +1,57 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <span><b>Ticket Management</b></span>
-    <ul class = "navbar-nav">
-        <li class = "nav-item">
-            <a *ngIf="isAdmin" routerLink="employees" routerLinkActive="active" class="nav-link" >Employee List</a>
-        </li>
-        <li class = "nav-item">
-            <a *ngIf="isAdmin" routerLink="create-employee" routerLinkActive="active" class="nav-link" >Add Employee</a>
-        </li>
-        <li class = "nav-item">
-            <a *ngIf="isCustomer || isAdmin" routerLink="raise-complaint" routerLinkActive="active" class="nav-link" >Raise Complaint</a>
-        </li>
-        <li class = "nav-item">
-            <a *ngIf="isEngineer ||isManager || isAdmin ||isCustomer" routerLink="view-complaint" routerLinkActive="active" class="nav-link" >View Complaint</a>
-        </li>
-       
-    </ul>
-</nav>
-<main>
-    <h1 class="text-center"> {{title}} </h1>
-    <div class = "container">
-        <router-outlet></router-outlet>
-    </div>
-</main>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <span><b>Ticket Management</b></span>
+        <ul class = "navbar-nav">
+            <li class = "nav-item">
+                <a *ngIf="isAdmin" routerLink="employees" routerLinkActive="active" class="nav-link" >Employee List</a>
+            </li>
+            <li class = "nav-item">
+                <a *ngIf="isAdmin" routerLink="create-employee" routerLinkActive="active" class="nav-link" >Add Employee</a>
+            </li>
+            <li class = "nav-item">
+                <a *ngIf="isCustomer || isAdmin" routerLink="raise-complaint" routerLinkActive="active" class="nav-link" >Raise Complaint</a>
+            </li>
+            <li class = "nav-item">
+                <a *ngIf="isEngineer ||isManager || isAdmin ||isCustomer" routerLink="view-complaint" routerLinkActive="active" class="nav-link" >View Complaint</a>
+            </li>
+        
+        </ul>
+    </nav>
+    <main>
+        <h1 class="text-center"> {{title}} </h1>
+        <div class = "container">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
 
 <!-- <footer class = "footer">
     
         <span>All Rights Reserved 2022 @ABC Telecom Ltd.</span>
     
 </footer> -->
+
+
+
+
+
+
+
+
+
+<!-- <div style="text-align:center">
+    <h1>
+       Welcome to {{title}}.
+    </h1>
+ </div> -->
+<!-- 
+ <h3 style="text-align:center">
+    <u> Complaint Redressal System</u>
+    </h3>
+
+ 
+
+  <div class="wrapper">
+  <app-header></app-header> -->
+    
+    <!-- <app-footer></app-footer> -->
+
+

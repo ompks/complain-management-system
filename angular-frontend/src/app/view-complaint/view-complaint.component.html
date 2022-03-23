@@ -21,9 +21,9 @@
 
             <td>
                 <!-- *ngIf="isAdmin || isManager"    -->
-                <button  (click) = "updateComplain(complain.id)" class = "btn btn-info" > Update</button>
-                <button (click) = "deleteComplain(complain.id)" class = "btn btn-danger" > Delete</button>
-                <button (click) = "complainDetails(complain.id)" class = "btn btn-info"  name ="view-complain"> View</button>
+                <button *ngIf="isAdmin || isManager || isEngineer"  (click) = "updateComplain(complain.id)" class = "btn btn-info" > Update</button>
+                <button *ngIf="isAdmin"  (click) = "deleteComplain(complain.id)" class = "btn btn-danger" > Delete</button>
+                <button *ngIf="isEngineer ||isManager || isAdmin ||isCustomer" (click) = "complainDetails(complain.id)" class = "btn btn-info"  name ="view-complain"> View</button>
             </td>
         </tr>
     </tbody>

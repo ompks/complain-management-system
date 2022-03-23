@@ -41,79 +41,56 @@ export class LoginComponent implements OnInit {
 
 
 
-enableEmployeeRoute(data){
-  // const data={user:'om',role:1};
-  console.log(data)
-  if(data['role']==1){
-    this.isAdmin=true;
-    this.isManager=true;
-    this.isEngineer=true;
-    this.isCustomer=true
-  }else if(data['role']==2){
-    this.isAdmin=false;
-    this.isManager=true;
-    this.isEngineer=false;
-    this.isCustomer=false
-  }else if(data['role']==3){
-    this.isAdmin=false;
-    this.isManager=false;
-    this.isEngineer=true;
-    this.isCustomer=false
-  }else if(data['role']==4){
-    this.isAdmin=false;
-    this.isManager=false;
-    this.isEngineer=false;
-    this.isCustomer=true
-  }
-  else {
-    this.router.navigate['/login']
-  }
+// enableEmployeeRoute(data){
+//   // const data={user:'om',role:1};
+//   console.log(data)
+//   if(data['role']==1){
+//     this.isAdmin=true;
+//     this.isManager=true;
+//     this.isEngineer=true;
+//     this.isCustomer=true
+//   }else if(data['role']==2){
+//     this.isAdmin=false;
+//     this.isManager=true;
+//     this.isEngineer=false;
+//     this.isCustomer=false
+//   }else if(data['role']==3){
+//     this.isAdmin=false;
+//     this.isManager=false;
+//     this.isEngineer=true;
+//     this.isCustomer=false
+//   }else if(data['role']==4){
+//     this.isAdmin=false;
+//     this.isManager=false;
+//     this.isEngineer=false;
+//     this.isCustomer=true
+//   }
+//   else {
+//     this.router.navigate['/login']
+//   }
 
-}
-
-
+// }
 
 
-  login() {
-    this.employeeService.callServerForPost(this.loginUrl, this.employee).subscribe(data => {
-    this.loginData=data
-    if(data['emailId'] != null){
-        console.log("inside data status")
-        this.enableEmployeeRoute(data)
-        this.employeeService.loginData=data;
-        // if(data['role'] == 'Admin'){
-        //   this.router.navigate(['/admin']);
-        // }
-        // else if (data['role'] == 'Engineer'){
-        //   this.router.navigate(['/engineer']);
-        // }
-        // else if (data['role'] == 'Manager'){
-        //   this.router.navigate(['/manager']);
-        // }
 
-        // else if (data['role'] == 'User'){
-        //   this.router.navigate(['/user']);
-        // }
-        // else {
-        //   // this.router.navigate(['/login']);
 
-        // }
-        // // this.setData(data)
-        // // appComponent.enableEmployeeRoute()
-        // // let appComponent= new AppComponent(this.router);
-        // // appComponent.enableEmployeeRoute(data);
-
-        // this.router.navigate(['/user']);
-      }
-      else {
-        window.confirm("Please Enter Valid Credentials")
-        console.log('Error')
-      }
-    },
-    error => console.log(error));
+  // login() {
+  //   this.employeeService.callServerForPost(this.loginUrl, this.employee).subscribe(data => {
+  //   this.loginData=data
+  //   if(data['emailId'] != null){
+  //       console.log("inside data status")
+  //       // this.enableEmployeeRoute(data)
+  //       this.employeeService.loginData=data;
+  //     }
+  //     else  {
+  //       window.confirm("Please Enter Valid Credentials")
+  //       console.log('Error')
+  //     }
+  //   },
+  //   error => console.log("error status",error.status));
 
    
-  }
+  // }
 
   onSubmit() {
     console.log("Employee data", this.employee);

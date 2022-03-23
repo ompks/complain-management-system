@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-customer',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-
-  constructor() { }
+  userMessage=""
+  constructor(
+    private appComponent:AppComponent
+  ) { }
 
   ngOnInit(): void {
+    this.userMessage=this.appComponent.message
   }
 
 }

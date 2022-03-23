@@ -49,14 +49,22 @@ public class ComplaintController {
 	}
 	
 	
-//	// get employee by raisedBy rest api
-//		@GetMapping("/complains/{raisedBy}")
-//		public ResponseEntity<List> getEmployeeById(@PathVariable String raisedBy) {
-//			List complainListRaisedBy = complainRepository.findAllByRaisedBy(raisedBy)
-//					.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with pin code :" + raisedBy));
-//			return ResponseEntity.ok(complainListRaisedBy);
-//		}
+	// get employee by raisedBy rest api
+		@GetMapping("/complainsByRaisedBy/{raisedBy}")
+		public ResponseEntity<List> getEmployeeByRaiseBy(@PathVariable String raisedBy) {
+			List complainListRaisedBy = complainRepository.findAllByRaisedBy(raisedBy)
+					.orElseThrow(() -> new ResourceNotFoundException("complain not exist with given raise by :" + raisedBy));
+			return ResponseEntity.ok(complainListRaisedBy);
+		}
 		
+		
+	// get employee by raisedBy rest api
+		@GetMapping("/complainsAssignedTo/{assignedTo}")
+		public ResponseEntity<List> getEmployeeByAssignedTo(@PathVariable String assignedTo) {
+			List complainListAssignedTo = complainRepository.findAllByAssignedTo(assignedTo)
+					.orElseThrow(() -> new ResourceNotFoundException("complain not exist with given assigned to :" + assignedTo));
+			return ResponseEntity.ok(complainListAssignedTo);
+		}
 		
 	// update employee rest api
 	

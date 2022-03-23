@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-admin',
@@ -7,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+  userMessage=""
+  constructor(
+    private appComponent:AppComponent
+  ) { }
 
   ngOnInit(): void {
+    this.userMessage=this.appComponent.message
   }
 
 }

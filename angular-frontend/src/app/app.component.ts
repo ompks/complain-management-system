@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   isAdmin=false;
   isManager=false;
   isEngineer=false;
-  isCustomer=false
+  isCustomer=false;
+  message=""
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
   enableEmployeeRoute(data){
     console.log("role of user",data['role'])
     // const data={user:'om',role:'Admin'};
+    this.message="Hello "+data['role']
     if(data['role']=="Admin"){
       console.log("test")
       this.isAdmin=true;
@@ -92,25 +94,23 @@ export class AppComponent implements OnInit {
       
         }
 
-
-
-
-
-
-        // // this.setData(data)
-        // // appComponent.enableEmployeeRoute()
-        // // let appComponent= new AppComponent(this.router);
-        // // appComponent.enableEmployeeRoute(data);
-
-        // this.router.navigate(['/user']);
       }
       else {
         window.confirm("Please Enter Valid Credentials")
         console.log('Error')
       }
     },
-    error => console.log(error));
+    error => 
+      {
+        if(error.status==404){
+                // console.log("error status",error.status)
+          window.confirm("Please Enter Valid Credentials")
+        }
+      }
+      
+      );
 
-   
+    
   }
 }
+

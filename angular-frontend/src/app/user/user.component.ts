@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -10,9 +10,14 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   title = 'Complaint Management System';
-  constructor() { }
+  userMessage=""
+  constructor(
+    private appComponent:AppComponent
+  ) { }
 
   ngOnInit(): void {
+    this.userMessage=this.appComponent.message
   }
 
 }
+

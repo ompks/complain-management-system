@@ -17,6 +17,9 @@ import { UserComponent } from './user/user.component';
 import { ManagerComponent } from './manager/manager.component';
 import { EngineerComponent } from './engineer/engineer.component';
 import { AdminComponent } from './admin/admin.component';
+import { LogoutComponent } from './logout/logout.component';
+
+
 const routes: Routes = [
   {path: 'employees', component: EmployeeListComponent },
   {path: 'view-employees', component: EmployeeListComponent },
@@ -45,6 +48,8 @@ const routes: Routes = [
   {path:'manager/view-complaint', component:ViewComplaintComponent},
   {path:'engineer', component:EngineerComponent},
   {path:'engineer/view-complaint', component:ViewComplaintComponent},
+  {path: 'logout', component:LogoutComponent},
+
 ];
 
 @NgModule({

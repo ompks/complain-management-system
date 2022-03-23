@@ -18,7 +18,8 @@ import { UpdateComplainComponent } from './update-complain/update-complain.compo
 import { UserComponent } from './user/user.component';
 import { ManagerComponent } from './manager/manager.component';
 import { EngineerComponent } from './engineer/engineer.component';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { LogoutComponent } from './logout/logout.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdminComponent } from './admin/admin.component'
     UserComponent,
     ManagerComponent,
     EngineerComponent,
-    AdminComponent
+    AdminComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

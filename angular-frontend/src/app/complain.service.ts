@@ -9,6 +9,9 @@ import { Complain } from './complain';
 export class ComplainService {
 
   private baseURL = "http://localhost:8080/api/v1/complains";
+  private baseURLRaisedBy="http://localhost:8080/api/v1/complainsByRaisedBy";
+  private baseURLAssignedTo="http://localhost:8080/api/v1/complainsAssignedTo";
+
 
   constructor(private httpClient: HttpClient) { }
   
@@ -22,6 +25,14 @@ export class ComplainService {
 
   getComplainById(id: number): Observable<Complain>{
     return this.httpClient.get<Complain>(`${this.baseURL}/${id}`);
+  }
+
+  getEmployeeByRaiseBy(raiseby: string): Observable<Complain>{
+    return this.httpClient.get<Complain>(`${this.baseURLRaisedBy}/${raiseby}`);
+  }
+
+  getEmployeeByAssignedTo(assinedTo: string): Observable<Complain>{
+    return this.httpClient.get<Complain>(`${this.baseURLAssignedTo}/${assinedTo}`);
   }
 
   updateComplain(id: number, complaint: Complain): Observable<Object>{

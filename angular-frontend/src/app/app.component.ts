@@ -71,6 +71,7 @@ export class AppComponent implements OnInit {
   login(loginInput) {
     this.employeeService.callServerForPost(this.loginUrl, loginInput).subscribe(data => {
     this.loginData=data
+    console.log("after login data value", data)
     if(data['emailId'] != null){
         console.log("inside data status")
         this.enableEmployeeRoute(data)

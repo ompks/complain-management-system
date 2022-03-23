@@ -11,7 +11,9 @@ import { AppComponent } from '../app.component';
 })
 export class ViewComplaintComponent implements OnInit {
 
-  complains:Complain[]
+  complains:Complain[];
+  complainsRaiseby:Complain;
+  complainsAssignedTo:Complain;
   isAdmin=false;
   isManager=false;
   isEngineer=false;
@@ -26,22 +28,26 @@ export class ViewComplaintComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getComplains();
-    console.log("login Data id in :- "+this.employeeService.loginData['id']);
+    // this.getComplains();
+    console.log("login Data :- "+this.employeeService.loginData['id']);
     this.viewComplaint=this.appCOmponent.loginData
-    console.log("view-complaint role", this.appCOmponent.loginData['role'])
+    // console.log("view-complaint role", this.appCOmponent.loginData['role'])
     if(this.appCOmponent.loginData['role'] == 'Admin'){
       // this.router.navigate(['/admin']);
       this.isAdmin=true;
       this.isManager=false;
       this.isEngineer=false;
       this.isCustomer=false
+      this.getComplains();
     }
     else if (this.appCOmponent.loginData['role'] == 'Engineer'){
       this.isAdmin=false;
       this.isManager=false;
       this.isEngineer=true;
       this.isCustomer=false
+      // key.firstName+" "+key.lastName
+      console.log("assigned to value :-",this.appCOmponent.loginData['firstName']+" "+this.appCOmponent.loginData['lastName'])
+      this.getComplainsBasedOnAssignedTo(this.appCOmponent.loginData['firstName']+" "+this.appCOmponent.loginData['lastName'])
       // this.router.navigate(['/engineer']);
     }
     else if (this.appCOmponent.loginData['role'] == 'Manager'){
@@ -49,6 +55,7 @@ export class ViewComplaintComponent implements OnInit {
       this.isManager=true;
       this.isEngineer=false;
       this.isCustomer=false
+      this.getComplains();
       // this.router.navigate(['/manager']);
     }
 
@@ -57,6 +64,7 @@ export class ViewComplaintComponent implements OnInit {
       this.isManager=false;
       this.isEngineer=false;
       this.isCustomer=true
+      this.getComplainsBasedOnRaisedBy(this.appCOmponent.loginData['id'])
       // this.router.navigate(['/user']);
     }
     else {
@@ -72,6 +80,19 @@ export class ViewComplaintComponent implements OnInit {
     this.complainService.getComplainsList().subscribe(data => {
       this.complains = data;
     });
+  }
+
+
+  private getComplainsBasedOnRaisedBy(raiseby: string){
+    this.complainService.getEmployeeByRaiseBy(raiseby).subscribe(data => {
+      this.complainsRaiseby=data;
+    })
+  }
+
+  private getComplainsBasedOnAssignedTo(assinedTo: string){
+    this.complainService.getEmployeeByAssignedTo(assinedTo).subscribe(data => {
+      this.complainsAssignedTo=data;
+    })
   }
 
 

@@ -10,6 +10,7 @@ import net.javaguides.springboot.model.Complaint;
 public interface ComplainRepository extends JpaRepository<Complaint, Long>{
 	
     Optional<List> findAllByRaisedBy(String raisedByValue);
+    Optional<List> findAllByAssignedTo(String assignedToValue);
 
 
 }

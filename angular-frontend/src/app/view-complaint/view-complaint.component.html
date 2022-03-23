@@ -1,5 +1,5 @@
 <h2> Complains List</h2>
-<table class = "table table-striped">
+<table class = "table table-striped" *ngIf="isAdmin || isManager">
     <thead>
         <tr>
             <th> Complain Id</th>
@@ -12,6 +12,68 @@
     </thead>
     <tbody>
         <tr *ngFor = "let complain of complains"  class="w-100 p-3" >
+            <td> {{ complain.id }} </td>
+            <td> {{ complain.complainName }} </td>
+            <td> {{ complain.complainDescription }} </td>
+            <td> {{ complain.complainType }}</td>
+            <td> {{ complain.complainPinCode }}</td>
+            <td> {{ complain.complainStatus }}</td>
+
+            <td>
+                <!-- *ngIf="isAdmin || isManager"    -->
+                <button *ngIf="isAdmin || isManager || isEngineer"  (click) = "updateComplain(complain.id)" class = "btn btn-info" > Update</button>
+                <button *ngIf="isAdmin"  (click) = "deleteComplain(complain.id)" class = "btn btn-danger" > Delete</button>
+                <button *ngIf="isEngineer ||isManager || isAdmin ||isCustomer" (click) = "complainDetails(complain.id)" class = "btn btn-info"  name ="view-complain"> View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class = "table table-striped" *ngIf="isEngineer">
+    <thead>
+        <tr>
+            <th> Complain Id</th>
+            <th> Complain Name </th>
+            <th> Complain Description</th>
+            <th> Complain Type </th>
+            <th> Complain Pin Code </th>
+            <th> Complain Status </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let complain of complainsAssignedTo"  class="w-100 p-3" >
+            <td> {{ complain.id }} </td>
+            <td> {{ complain.complainName }} </td>
+            <td> {{ complain.complainDescription }} </td>
+            <td> {{ complain.complainType }}</td>
+            <td> {{ complain.complainPinCode }}</td>
+            <td> {{ complain.complainStatus }}</td>
+
+            <td>
+                <!-- *ngIf="isAdmin || isManager"    -->
+                <button *ngIf="isAdmin || isManager || isEngineer"  (click) = "updateComplain(complain.id)" class = "btn btn-info" > Update</button>
+                <button *ngIf="isAdmin"  (click) = "deleteComplain(complain.id)" class = "btn btn-danger" > Delete</button>
+                <button *ngIf="isEngineer ||isManager || isAdmin ||isCustomer" (click) = "complainDetails(complain.id)" class = "btn btn-info"  name ="view-complain"> View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class = "table table-striped" *ngIf="isCustomer">
+    <thead>
+        <tr>
+            <th> Complain Id</th>
+            <th> Complain Name </th>
+            <th> Complain Description</th>
+            <th> Complain Type </th>
+            <th> Complain Pin Code </th>
+            <th> Complain Status </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let complain of complainsRaiseby"  class="w-100 p-3" >
             <td> {{ complain.id }} </td>
             <td> {{ complain.complainName }} </td>
             <td> {{ complain.complainDescription }} </td>
